@@ -1,0 +1,41 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>  // для sort
+using namespace std;
+
+// Структура для зберігання інформації про робота
+struct Robot {
+    int mainNumber;     // Основний номер
+    int auxNumber;      // Допоміжний номер
+    int index;          // Індекс для збереження початкового порядку
+};
+
+// Функція порівняння для сортування
+bool compare(const Robot &a, const Robot &b) {
+    if (a.mainNumber != b.mainNumber)
+        return a.mainNumber < b.mainNumber;  // Сортування за основним номером
+    return a.index < b.index;  // Збереження початкового порядку при рівних основних номерах
+}
+
+int main() {
+    int n;
+    cin >> n;
+
+    vector<Robot> robots(n);
+
+    // Зчитування даних про роботів
+    for (int i = 0; i < n; ++i) {
+        cin >> robots[i].mainNumber >> robots[i].auxNumber;
+        robots[i].index = i;  // Збереження початкового порядку
+    }
+
+    // Сортування роботів за умовою задачі
+    sort(robots.begin(), robots.end(), compare);
+
+    // Виведення відсортованого списку роботів
+    for (int i = 0; i < n; ++i) {
+        cout << robots[i].mainNumber << " " << robots[i].auxNumber << "\n";
+    }
+
+    return 0;
+}
