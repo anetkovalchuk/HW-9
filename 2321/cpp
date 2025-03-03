@@ -1,0 +1,29 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>  // для функції sort
+
+using namespace std;
+
+int main() {
+    // Зчитування кількості елементів
+    int n;
+    cin >> n;
+
+    // Створення вектора для збереження чисел
+    vector<int> numbers(n);
+
+    // Зчитування чисел у вектор
+    for (int i = 0; i < n; ++i) {
+        cin >> numbers[i];
+    }
+
+    // Сортування вектора в порядку неубування
+    sort(numbers.begin(), numbers.end());
+
+    // Виведення відсортованого вектора
+    for (int i = 0; i < n; ++i) {
+        cout << numbers[i] << " ";
+    }
+
+    return 0;
+}
